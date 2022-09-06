@@ -5,8 +5,6 @@ class WeatherExample
     {
         $this->loadDependencies();
         $this->checkACF();
-        $this->loadFrontendJs();
-        $this->loadBackendJs();
         $this->loadFrontendCss();
         $this->registerFieldGroups();
         $this->registerPostType();
@@ -28,23 +26,8 @@ class WeatherExample
             return;
         }
     }
-    # Lädt die JS für das Backend
-    private function loadBackendJs()
-    {
-        # if is admin and on the edit page of the weather post type
-        if (is_admin() && get_post_type() === 'weather') {
-            add_action('admin_enqueue_scripts', function () {
-                wp_enqueue_script('weather-example-backend', plugin_dir_url(__DIR__) . 'js/backend.js', ['jquery'], '1.0.0', true);
-            });
-        }
-    }
-    # Lädt die JS für das Frontend
-    private function loadFrontendJs()
-    {
-            add_action('wp_enqueue_scripts', function () {
-                wp_enqueue_script('weather-example-frontend', plugin_dir_url(__DIR__) . 'js/frontend.js', ['jquery'], '1.0.0', true);
-            });
-        }
+    
+    # Lädt Frontend CSS
     private function loadFrontendCss()
     {
         # if singular or archive stadt load frontend css
