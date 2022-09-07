@@ -15,6 +15,7 @@ class WeatherExample
     private function loadDependencies()
     {
         require_once plugin_dir_path(__FILE__) . 'class-weatherapi.php';
+        $this->weatherapi = new WeatherApi();
     }
     # Prüft ob ACF aktiviert ist
     private function checkACF()
@@ -114,5 +115,9 @@ class WeatherExample
             return $template_path;
         }
         
+    }
+    public function getWeather()
+    {
+        return $this->weatherapi->getWeather();
     }
 }
